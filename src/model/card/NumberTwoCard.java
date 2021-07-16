@@ -5,89 +5,94 @@ import java.awt.Color;
 import model.Deck;
 import model.Pawn;
 
-public class NumberTwoCard extends NumberCard{
-	
-	/** Constructor. 
-	* Method to create an object of type NumberTwoCard.
-	* @pre 
-	* @post Creates an object of type NumberTwoCard and gives to it the number two.
-	*/
-	
+public class NumberTwoCard extends NumberCard {
+
+	/**
+	 * Constructor. Method to create an object of type NumberTwoCard.
+	 * 
+	 * @pre
+	 * @post Creates an object of type NumberTwoCard and gives to it the number two.
+	 */
+
 	public NumberTwoCard() {
 		setNumber(2);
 	}
 
 	public String toString() {
-		return "Card's number: "+getNumber()+"\n"
-			  +"Attributes: With this card player can move one of his pawns out of its start "
-			  +"square or 2 squares front.\n";
+		return "Card's number: " + getNumber() + "\n"
+				+ "Attributes: With this card player can move one of his pawns out of its start "
+				+ "square or 2 squares front.\n";
 
 	}
-	
+
 	/**
 	 * Pawn can start from the start square or move two squares front. If the pawn
-	 *  moved to a square where a pawn of different color is located, it sends the 
-	 *  different color pawn to its start square. Also, if the pawn moved to a 
-	 *  StartSlideSquare with different color then it slides to the EndSlideSquare 
-	 *  of this color and sends pawns which are in this whole slide square to their
-	 *  start squares.
+	 * moved to a square where a pawn of different color is located, it sends the
+	 * different color pawn to its start square. Also, if the pawn moved to a
+	 * StartSlideSquare with different color then it slides to the EndSlideSquare of
+	 * this color and sends pawns which are in this whole slide square to their
+	 * start squares.
+	 * 
 	 * @pre ableToMove function returned true/move is valid.
 	 * @post Moves the pawn two squares front, or moves it out of its start square.
-	 * @param pawn The pawn that will be moved.
-     * @param table The table/ squares where the pawn is moving on.
+	 * @param pawn  The pawn that will be moved.
+	 * @param table The table/ squares where the pawn is moving on.
 	 */
 
 	public void movePawn(Pawn pawn, Deck table) {
-		if(pawn.getPosition()==72) {
-			if(table.getBoard().get(4).isPawnOn()==true) {
-				//stelnei to kitrino pawn sto start square tou
+		if (pawn.getPosition() == 72) {
+			if (table.getBoard().get(4).isPawnOn() == true) {
+				// stelnei to kitrino pawn sto start square tou
 				sendStart(table.getBoard().get(4).getPawnOn(), table);
 			}
 			pawn.setPosition(4);
 			pawn.setEnable();
 			table.getBoard().get(4).setPawnOn(pawn);
-		}else if(pawn.getPosition()==73) {
-			if(table.getBoard().get(34).isPawnOn()==true) {
-				//stelnei to kokkino pawn sto start square tou
+		} else if (pawn.getPosition() == 73) {
+			if (table.getBoard().get(34).isPawnOn() == true) {
+				// stelnei to kokkino pawn sto start square tou
 				sendStart(table.getBoard().get(34).getPawnOn(), table);
 			}
 			pawn.setPosition(34);
 			pawn.setEnable();
 			table.getBoard().get(34).setPawnOn(pawn);
-		}else {
+		} else {
 			super.movePawn(pawn, table);
 		}
-     return;
+		return;
 	}
-	
+
 	/**
-	 * Checks if the move is valid. Pawn can start from its start square but must not move to opponent's home, safety zone or to a square where a pawn of the same colour is.
+	 * Checks if the move is valid. Pawn can start from its start square but must
+	 * not move to opponent's home, safety zone or to a square where a pawn of the
+	 * same colour is.
+	 * 
 	 * @pre Parameters are not null.
 	 * @post Returns true if move is valid.
-	 * @param pawn The pawn we want to check if can be moved.
-     * @param table The table/ squares where the pawn is moving on.
+	 * @param pawn  The pawn we want to check if can be moved.
+	 * @param table The table/ squares where the pawn is moving on.
 	 * @return True if move is valid.
 	 */
-	
+
 	public boolean ableToMove(Pawn pawn, Deck table) {
-		if(pawn.getPosition()==72) {
-			if(table.getBoard().get(4).isPawnOn()==true) {
-				if(table.getBoard().get(4).getPawnOn().getColor()== Color.RED) {
+		if (pawn.getPosition() == 72) {
+			if (table.getBoard().get(4).isPawnOn() == true) {
+				if (table.getBoard().get(4).getPawnOn().getColor() == Color.RED) {
 					return false;
-				}else {
+				} else {
 					return true;
 				}
-			}else {
+			} else {
 				return true;
 			}
-		}else if(pawn.getPosition()==73) {
-			if(table.getBoard().get(34).isPawnOn()==true) {
-				if(table.getBoard().get(34).getPawnOn().getColor()== Color.YELLOW) {
+		} else if (pawn.getPosition() == 73) {
+			if (table.getBoard().get(34).isPawnOn() == true) {
+				if (table.getBoard().get(34).getPawnOn().getColor() == Color.YELLOW) {
 					return false;
-				}else {
+				} else {
 					return true;
 				}
-			}else {
+			} else {
 				return true;
 			}
 		}
