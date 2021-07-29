@@ -12,7 +12,7 @@ Open an IDE(Eclipse,netBeans etc.) and click run.
 
 ## **The game just started**
 
-All are ready and initialized. The first card has been dropped.\
+Everything is ready and initialized. The first card has been dropped.\
 Turn is given randomly. InfoBox informs you about who is going to
 play first.
 
@@ -24,7 +24,7 @@ Only with cards 1,2 and occasionally with Sorry card.
 
 Click on the pawn you want to move. The pawn will move accordinly\
 to the card if the move is valid. If the number of the card is 1,2,\
-3,5,8 or 12 the pawn moves front by number. If the card is 4 the\
+3,5,8 or 12 the pawn moves front by this number. If the card is 4 the\
 pawn moves back by 4. If the card is 7 you can move both of your\
 pawns 7 in total. If the card is 10 you can either move front by 10\
 or move back 1 square. If the card is 11 you can either move front\
