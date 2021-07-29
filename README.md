@@ -22,7 +22,7 @@ Only with cards 1,2 and occasionally with Sorry card.
 
 ## **How to move a pawn**
 
-Click on the pawn you want to move. The pawn will move accordinly\
+Click on the pawn you want to move. The pawn will move accordingly\
 to the card if the move is valid. If the number of the card is 1,2,\
 3,5,8 or 12 the pawn moves front by this number. If the card is 4 the\
 pawn moves back by 4. If the card is 7 you can move both of your\
