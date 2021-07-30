@@ -122,7 +122,7 @@ public class Deck {
 		reshuffling();
 		squaresOfBoard = new ArrayList<Square>();
 		int givenPosition = 0;
-		for (int i = 0; i < 4; i++) { // ftiaxnoume prwta ta gyrw gyrw tetragwna
+		for (int i = 0; i < 4; i++) {
 			Color color;
 			if (i == 0) {
 				color = Color.RED;
@@ -164,7 +164,7 @@ public class Deck {
 			squaresOfBoard.add(new SimpleSquare(givenPosition, Color.WHITE));
 			givenPosition++;
 		}
-		// ftiaxnoume kai ta safety zone home start squares
+		
 		for (int i = 0; i < 2; i++) {
 			Color color;
 			if (i == 0) {

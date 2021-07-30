@@ -36,7 +36,7 @@ public class NumberFourCard extends NumberCard {
 
 	public void movePawn(Pawn pawn, Deck table) {
 		table.getBoard().get(pawn.getPosition()).setPawnOn(null);
-		// an einai se safety zone
+		// on safety zone
 		if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) {
 			if (pawn.getPosition() == 60) {
 				pawn.isEnabled();
@@ -67,7 +67,7 @@ public class NumberFourCard extends NumberCard {
 			table.getBoard().get(pawn.getPosition()).setPawnOn(pawn);
 			return;
 		}
-		// se apla tetragwna me thesi 0 1 2 h 3
+		// simple square with position 0 1 2 or 3
 		if (pawn.getPosition() <= 3) {
 			pawn.setPosition(pawn.getPosition() - getNumber() + 60);
 			if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) {
@@ -84,11 +84,10 @@ public class NumberFourCard extends NumberCard {
 						sendStart(table.getBoard().get(pawn.getPosition() - i).getPawnOn(), table);
 					}
 				}
-			} else { // sta ypoloipa tetragwna
+			} else { // rest squares
 				pawn.setPosition(pawn.getPosition() - getNumber());
 				if (table.getBoard().get(pawn.getPosition()) instanceof StartSlideSquare
-						&& table.getBoard().get(pawn.getPosition()).getColor() != Color.RED) { // tote tha pesei sti
-																								// mikri skala slide
+						&& table.getBoard().get(pawn.getPosition()).getColor() != Color.RED) { // small slide
 					for (int i = 0; i <= 3; i++) {
 						if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
 							sendStart(table.getBoard().get(pawn.getPosition() + i).getPawnOn(), table);
@@ -101,18 +100,17 @@ public class NumberFourCard extends NumberCard {
 					}
 				}
 			}
-		} else { // an einai kitrino
+		} else { // yellow
 			if (pawn.getPosition() == 28 || pawn.getPosition() == 13 || pawn.getPosition() == 58) {
 				for (int i = 1; i <= 4; i++) {
 					if (table.getBoard().get(pawn.getPosition() - i).isPawnOn() == true) {
 						sendStart(table.getBoard().get(pawn.getPosition() - i).getPawnOn(), table);
 					}
 				}
-			} else { // sta ypoloipa tetragwna
+			} else { // rest squares
 				pawn.setPosition(pawn.getPosition() - getNumber());
 				if (table.getBoard().get(pawn.getPosition()) instanceof StartSlideSquare
-						&& table.getBoard().get(pawn.getPosition()).getColor() != Color.YELLOW) { // tote tha pesei sti
-																									// mikri skala slide
+						&& table.getBoard().get(pawn.getPosition()).getColor() != Color.YELLOW) { // on small slide
 					for (int i = 0; i <= 3; i++) {
 						if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
 							sendStart(table.getBoard().get(pawn.getPosition() + i).getPawnOn(), table);
@@ -142,17 +140,17 @@ public class NumberFourCard extends NumberCard {
 	 * @return True if the move can be done, else false.
 	 */
 	public boolean ableToMove(Pawn pawn, Deck table) {
-		if (pawn.isFinished() == true) { // an exei ftasei home
+		if (pawn.isFinished() == true) { // reach home
 			return false;
 		}
-		// an einai start
+		// on start
 		if (pawn.isEnabled() == false) {
-			if (table.getBoard().get(pawn.getPosition()) instanceof StartSquare) { // an einai se start square
+			if (table.getBoard().get(pawn.getPosition()) instanceof StartSquare) {
 				return false;
 			}
 		}
-		// an einai se safety zone
-		if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // gia to kokkino pawn
+		// on safety zone
+		if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // red pawn
 			if (pawn.getPosition() == 60) {
 				if (table.getBoard().get(59).isPawnOn() == false) {
 					return true;
@@ -164,9 +162,7 @@ public class NumberFourCard extends NumberCard {
 					}
 				}
 			} else if (pawn.getPosition() == 64) {
-				if (table.getBoard().get(pawn.getPosition() - getNumber()).isPawnOn() == true) { // an iparxei tote
-																									// einai kokkino ara
-																									// false.
+				if (table.getBoard().get(pawn.getPosition() - getNumber()).isPawnOn() == true) {
 					return false;
 				} else {
 					return true;
@@ -184,12 +180,10 @@ public class NumberFourCard extends NumberCard {
 				}
 			}
 		}
-		// gia to kitrino
+		// yellow
 		if (pawn.getPosition() >= 66) {
 			if (pawn.getPosition() == 70) {
-				if (table.getBoard().get(pawn.getPosition() - getNumber()).isPawnOn() == true) { // an iparxei tote
-																									// einai kitrino ara
-																									// false.
+				if (table.getBoard().get(pawn.getPosition() - getNumber()).isPawnOn() == true) {
 					return false;
 				} else {
 					return true;
@@ -207,9 +201,9 @@ public class NumberFourCard extends NumberCard {
 				}
 			}
 		}
-		// alliws an einai se aplo tetragwno
+		// on simple square
 		if (pawn.getColor() == Color.RED) {
-			// ta slides
+			// slides
 			if (pawn.getPosition() == 28 || pawn.getPosition() == 43 || pawn.getPosition() == 58) {
 				return true;
 			} else if (pawn.getPosition() <= 3) {
@@ -234,8 +228,8 @@ public class NumberFourCard extends NumberCard {
 					}
 				}
 			}
-		} else { // an einai kitrino
-			// ta slides
+		} else { // yellow
+			// slides
 			if (pawn.getPosition() == 28 || pawn.getPosition() == 13 || pawn.getPosition() == 58) {
 				return true;
 			} else if (pawn.getPosition() <= 3) {

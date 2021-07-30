@@ -56,7 +56,7 @@ public class NumberTenCard extends NumberCard {
 			}
 		} else {
 			pawn.setPosition(pawn.getPosition() - 1);
-			// ta slides
+			// slides
 			if (pawn.getColor() == Color.RED) {
 				if (pawn.getPosition() == 16 || pawn.getPosition() == 31 || pawn.getPosition() == 46) {
 					for (int i = 0; i <= 3; i++) {
@@ -78,7 +78,7 @@ public class NumberTenCard extends NumberCard {
 					}
 				}
 
-			} else { // an einai kitrino
+			} else { // yellow pawn
 				if (pawn.getPosition() == 16 || pawn.getPosition() == 1 || pawn.getPosition() == 46) {
 					for (int i = 0; i <= 3; i++) {
 						if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -144,12 +144,12 @@ public class NumberTenCard extends NumberCard {
 				if (table.getBoard().get(pawn.getPosition() - 1).isPawnOn() == false) {
 					return true;
 				} else {
-					return false; // an uparxei pawn sto safety zone tha einai sigoura idiou xrwmatos
+					return false;
 				}
 			}
 		}
 
-		// alliws einai se aplo tetragwno
+		// on simple square
 		if (pawn.getColor() == Color.RED) {
 			if (pawn.getPosition() == 0) {
 				if (table.getBoard().get(pawn.getPosition() - 1 + 60).isPawnOn() == false) {

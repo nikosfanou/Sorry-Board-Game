@@ -41,7 +41,7 @@ public class NumberElevenCard extends NumberCard {
 		table.getBoard().get(opponentPawn.getPosition()).setPawnOn(opponentPawn);
 
 		if (pawn.getColor() == Color.RED) {
-			// ta slides
+			// slides
 			if (pawn.getPosition() == 31) {
 				for (int i = 1; i <= 3; i++) {
 					if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -61,8 +61,8 @@ public class NumberElevenCard extends NumberCard {
 				pawn.setPosition(pawn.getPosition() + 4);
 				table.getBoard().get(pawn.getPosition()).setPawnOn(pawn);
 			}
-		} else { // an to pioni einai kitrino kai pesei stin arxi kokkinou slide
-			// ta slides
+		} else { // yellow on start of red slide
+			// slides
 			if (pawn.getPosition() == 1) {
 				for (int i = 1; i <= 3; i++) {
 					if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -84,9 +84,9 @@ public class NumberElevenCard extends NumberCard {
 			}
 		}
 
-		// kai gia to opponentPawn
+		// same for opponentPawn
 		if (opponentPawn.getColor() == Color.RED) {
-			// ta slides
+			// slides
 			if (opponentPawn.getPosition() == 31) {
 				for (int i = 1; i <= 3; i++) {
 					if (table.getBoard().get(opponentPawn.getPosition() + i).isPawnOn() == true) {
@@ -106,8 +106,8 @@ public class NumberElevenCard extends NumberCard {
 				opponentPawn.setPosition(opponentPawn.getPosition() + 4);
 				table.getBoard().get(opponentPawn.getPosition()).setPawnOn(opponentPawn);
 			}
-		} else { // an to pioni einai kitrino kai pesei stin arxi kokkinou slide
-			// ta slides
+		} else { // yellow on the start of a red slide
+			// slides
 			if (opponentPawn.getPosition() == 1) {
 				for (int i = 1; i <= 3; i++) {
 					if (table.getBoard().get(opponentPawn.getPosition() + i).isPawnOn() == true) {

@@ -52,8 +52,8 @@ public abstract class NumberCard extends Card {
 	 */
 
 	public void movePawn(Pawn pawn, Deck table) {
-		// an einai se safety zone
-		if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // gia to kokkino pawn
+		// in safety zone
+		if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // red pawn
 			table.getBoard().get(pawn.getPosition()).setPawnOn(null);
 			if (pawn.getPosition() + number == 65) {
 				pawn.setPosition(65);
@@ -64,7 +64,7 @@ public abstract class NumberCard extends Card {
 			table.getBoard().get(pawn.getPosition()).setPawnOn(pawn);
 			return;
 		}
-		if (pawn.getPosition() >= 66 && pawn.getPosition() < 71) { // gia to kitrino pawn
+		if (pawn.getPosition() >= 66 && pawn.getPosition() < 71) { // yellow pawn
 			table.getBoard().get(pawn.getPosition()).setPawnOn(null);
 			if (pawn.getPosition() + number == 71) {
 				pawn.setPosition(71);
@@ -81,10 +81,7 @@ public abstract class NumberCard extends Card {
 			if (pawn.getPosition() <= 2) {
 				if (pawn.getPosition() + number <= 2) {
 					pawn.setPosition(pawn.getPosition() + number);
-					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) { // an uparxei pawn tha einai
-																						// diaforetiko xrwma afou an
-																						// itan idio de tha epestrefe
-																						// false i ableToMove
+					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) { // if there is a pawn on, it is different colour
 						sendStart(table.getBoard().get(pawn.getPosition()).getPawnOn(), table);
 					}
 				} else {
@@ -99,11 +96,11 @@ public abstract class NumberCard extends Card {
 			} else if (pawn.getPosition() <= 59) {
 				if (pawn.getPosition() + number <= 59) {
 					pawn.setPosition(pawn.getPosition() + number);
-					// ektos apta slides
+					// not slides
 					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) {
 						sendStart(table.getBoard().get(pawn.getPosition()).getPawnOn(), table);
 					}
-					// ta slides
+					// slides
 					if (pawn.getPosition() == 16 || pawn.getPosition() == 31 || pawn.getPosition() == 46) {
 						for (int i = 1; i <= 3; i++) {
 							if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -132,15 +129,15 @@ public abstract class NumberCard extends Card {
 					}
 				}
 			}
-		} else { // an einai kitrino
+		} else { // yellow
 			if (pawn.getPosition() <= 32) {
 				if (pawn.getPosition() + number <= 32) {
 					pawn.setPosition(pawn.getPosition() + number);
-					// ektos apta slides
+					// not slides
 					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) {
 						sendStart(table.getBoard().get(pawn.getPosition()).getPawnOn(), table);
 					}
-					// ta slides
+					// slides
 					if (pawn.getPosition() == 1 || pawn.getPosition() == 16) {
 						for (int i = 1; i <= 3; i++) {
 							if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -165,14 +162,14 @@ public abstract class NumberCard extends Card {
 					}
 					pawn.setDisable();
 				}
-			} else if (pawn.getPosition() <= 59) { // isws tha mporouse sketo else
+			} else if (pawn.getPosition() <= 59) {
 				if (pawn.getPosition() + number <= 59) {
 					pawn.setPosition(pawn.getPosition() + number);
-					// ektos ta slides
+					// not slides
 					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) {
 						sendStart(table.getBoard().get(pawn.getPosition()).getPawnOn(), table);
 					}
-					// ta slides
+					// slides
 					if (pawn.getPosition() == 46) {
 						for (int i = 1; i <= 3; i++) {
 							if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -190,11 +187,11 @@ public abstract class NumberCard extends Card {
 					}
 				} else {
 					pawn.setPosition(pawn.getPosition() + number - 60);
-					// ektos ta slides
+					// not slides
 					if (table.getBoard().get(pawn.getPosition()).isPawnOn() == true) {
 						sendStart(table.getBoard().get(pawn.getPosition()).getPawnOn(), table);
 					}
-					// ta slides
+					// slides
 					if (pawn.getPosition() == 1) {
 						for (int i = 1; i <= 3; i++) {
 							if (table.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -229,23 +226,20 @@ public abstract class NumberCard extends Card {
 	 * @return True if the move can be done, else false.
 	 */
 	public boolean ableToMove(Pawn pawn, Deck table) {
-		if (pawn.isFinished() == true) { // an exei ftasei home
+		if (pawn.isFinished() == true) { // if reach home
 			return false;
 		}
 		if (pawn.isEnabled() == false) {
 			if (table.getBoard().get(pawn.getPosition()) instanceof StartSquare) { // an einai se start square
 				return false;
 			}
-			// an einai se safety zone
-			if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // gia to kokkino pawn
+			// on safety zone
+			if (pawn.getPosition() >= 60 && pawn.getPosition() < 65) { // red pawn
 				if ((pawn.getPosition() + number) <= 65) {
 					if (pawn.getPosition() + number == 65) {
 						return true;
 					}
-					if (table.getBoard().get(pawn.getPosition() + number).isPawnOn() == true) { // an yparxei allo pioni
-																								// sto safety zone tote
-																								// sigoura tha einai
-																								// idiou xrwmatos
+					if (table.getBoard().get(pawn.getPosition() + number).isPawnOn() == true) { // if there is a pawn on, it has the same colour
 						return false;
 					}
 					return true;
@@ -253,7 +247,7 @@ public abstract class NumberCard extends Card {
 					return false;
 				}
 			}
-			if (pawn.getPosition() >= 66 && pawn.getPosition() < 71) { // gia to kitrino pawn
+			if (pawn.getPosition() >= 66 && pawn.getPosition() < 71) { // yellow pawn
 				if ((pawn.getPosition() + number) <= 71) {
 					if (pawn.getPosition() + number == 71) {
 						return true;
@@ -304,7 +298,7 @@ public abstract class NumberCard extends Card {
 			} else {
 				return true;
 			}
-		} else { // an einai kitrino
+		} else { // yellow
 			if (pawn.getPosition() <= 32) {
 				if (pawn.getPosition() + number <= 32) {
 					possiblePosition = pawn.getPosition() + number;

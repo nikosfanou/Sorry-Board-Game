@@ -41,7 +41,7 @@ public class NumberOneCard extends NumberCard {
 	public void movePawn(Pawn pawn, Deck table) {
 		if (pawn.getPosition() == 72) {
 			if (table.getBoard().get(4).isPawnOn() == true) {
-				// stelnei to kitrino pawn sto start square tou
+				// send yellow pawn to its start square
 				sendStart(table.getBoard().get(4).getPawnOn(), table);
 			}
 			pawn.setPosition(4);
@@ -49,7 +49,7 @@ public class NumberOneCard extends NumberCard {
 			table.getBoard().get(4).setPawnOn(pawn);
 		} else if (pawn.getPosition() == 73) {
 			if (table.getBoard().get(34).isPawnOn() == true) {
-				// stelnei to kokkino pawn sto start square tou
+				// send red pawn to its start square
 				sendStart(table.getBoard().get(34).getPawnOn(), table);
 			}
 			pawn.setPosition(34);

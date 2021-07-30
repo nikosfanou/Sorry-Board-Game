@@ -103,9 +103,6 @@ public class View extends JFrame {
     public void createPackOfCards() {
         packOfCards = new JButton("Pack Of Cards");
         packOfCards.setBounds(750, 150, 85, 120);
-        // packOfCards.setIcon(new ImageIcon(new
-        // ImageIcon(tableBackground.getClass().getResource("images/images/cards/backCard.png")).getImage().getScaledInstance(36,
-        // 36, Image.SCALE_SMOOTH)));
         packOfCards.setHorizontalAlignment(JButton.CENTER);
         packOfCards.setIcon(new ImageIcon("images/images/cards/backCard2.png"));
     }
@@ -171,7 +168,7 @@ public class View extends JFrame {
     public void createSquares() {
         squares = new JLabel[74];
 
-        for (int i = 0; i < 16; i++) { // panw seira
+        for (int i = 0; i < 16; i++) { // Above row
             squares[i] = new JLabel();
             squares[i].setBounds(20 + 40 * i, 20, 40, 40);
             squares[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -191,7 +188,7 @@ public class View extends JFrame {
             squares[i].setOpaque(true);
         }
 
-        for (int i = 16; i < 30; i++) { // deksia seira
+        for (int i = 16; i < 30; i++) { // Right row
             squares[i] = new JLabel();
             squares[i].setBounds(620, 20 + 40 * (i - 15), 40, 40);
             squares[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -211,7 +208,7 @@ public class View extends JFrame {
             squares[i].setOpaque(true);
         }
 
-        for (int i = 30; i < 45; i++) { // katw seira
+        for (int i = 30; i < 45; i++) { // Below row
             squares[i] = new JLabel();
             squares[i].setBounds(620 - 40 * (i - 30), 620, 40, 40);
             squares[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -231,7 +228,7 @@ public class View extends JFrame {
             squares[i].setOpaque(true);
         }
 
-        for (int i = 45; i < 60; i++) { // aristeri seira
+        for (int i = 45; i < 60; i++) { // Left row
             squares[i] = new JLabel();
             squares[i].setBounds(20, 620 - 40 * (i - 45), 40, 40);
             squares[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -251,7 +248,7 @@ public class View extends JFrame {
             squares[i].setOpaque(true);
         }
 
-        for (int i = 60; i < 66; i++) { // panw safety zone
+        for (int i = 60; i < 66; i++) { // Above safety zone
             squares[i] = new JLabel();
             if (i == 65) {
                 squares[i].setBounds(78, 20 + 40 * (i - 59), 85, 70);
@@ -268,7 +265,7 @@ public class View extends JFrame {
             squares[i].setOpaque(true);
         }
 
-        for (int i = 66; i < 72; i++) { // katw safety zone
+        for (int i = 66; i < 72; i++) { // below safety zone
             squares[i] = new JLabel();
             if (i == 71) {
                 squares[i].setBounds(518, 590 - 40 * (i - 65), 85, 70);
@@ -318,10 +315,10 @@ public class View extends JFrame {
         player1Pawns[1] = new JButton(new ImageIcon("images/images/pawns/redPawn2,2.png"));
         player2Pawns[0] = new JButton(new ImageIcon("images/images/pawns/yellowPawn1,2.png"));
         player2Pawns[1] = new JButton(new ImageIcon("images/images/pawns/yellowPawn2,2.png"));
-        player1Pawns[0].setBounds(161, 62, 40, 40); // gia to start tou
-        player1Pawns[1].setBounds(200, 62, 40, 40); // gia to start tou
-        player2Pawns[0].setBounds(441, 578, 40, 40); // gia na vrisketai sto start tou
-        player2Pawns[1].setBounds(480, 578, 40, 40); // gia na vrisketai sto start tou
+        player1Pawns[0].setBounds(161, 62, 40, 40); // player 1 start position
+        player1Pawns[1].setBounds(200, 62, 40, 40);
+        player2Pawns[0].setBounds(441, 578, 40, 40); // player 2 start position
+        player2Pawns[1].setBounds(480, 578, 40, 40);
     }
 
     /**
@@ -353,13 +350,13 @@ public class View extends JFrame {
      */
     public void reachHome(JButton pawn) {
         if (pawn.equals(player1Pawns[0])) {
-            player1Pawns[0].setBounds(80, 262, 40, 40); // otan mpainei home to prwto kokkino
+            player1Pawns[0].setBounds(80, 262, 40, 40); // first red reach home
         } else if (pawn.equals(player1Pawns[1])) {
-            player1Pawns[1].setBounds(120, 262, 40, 40); // otan mpainei home to deytero kokkino
+            player1Pawns[1].setBounds(120, 262, 40, 40); // second red reach home
         } else if (pawn.equals(player2Pawns[0])) {
-            player2Pawns[0].setBounds(521, 375, 40, 40); // otan mpainei sto home to prwto kitrino
+            player2Pawns[0].setBounds(521, 375, 40, 40); // first yellow reach home
         } else if (pawn.equals(player2Pawns[1])) {
-            player2Pawns[1].setBounds(561, 375, 40, 40); // otan mpainei home to deytero kitrino
+            player2Pawns[1].setBounds(561, 375, 40, 40); // second yellow reach home
         }
 
     }

@@ -51,7 +51,7 @@ public class SorryCard extends Card {
 		pawn.setPosition(opponent.getPosition());
 		sendStart(opponent, d);
 		if (pawn.getColor() == Color.RED) {
-			// ta slides
+			// slides
 			if (pawn.getPosition() == 31) {
 				for (int i = 1; i <= 3; i++) {
 					if (d.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
@@ -67,8 +67,8 @@ public class SorryCard extends Card {
 				}
 				pawn.setPosition(pawn.getPosition() + 4);
 			}
-		} else { // an to pioni einai kitrino kai pesei stin arxi kokkinou slide
-			// ta slides
+		} else { // if yellow pawn goes to the start of red slide
+			// slides
 			if (pawn.getPosition() == 1) {
 				for (int i = 1; i <= 3; i++) {
 					if (d.getBoard().get(pawn.getPosition() + i).isPawnOn() == true) {
