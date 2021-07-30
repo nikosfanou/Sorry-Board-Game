@@ -2,7 +2,7 @@
 
 FANOURAKIS NIKOLAOS\
 email: nikosfan@hotmail.com\
-This project was developed in 2019-2020 when I was in my second year of my undergraduate studies.
+This project was developed in 2019-2020 when I was in my second year of undergraduate studies.
 
 This readme file can help you on how to play the game.\
 I hope you enjoy it ! :smile:
